@@ -99,5 +99,68 @@ li.submenu__item {
   margin-bottom: 5px;
 }
 
+div.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+article.caja-foto {
+  display: inline-block;
+  margin-right: 1rem;
+  position: relative;
+}
+
+img {
+  height: 400px;
+  width: 600px;
+  object-fit: cover;
+  padding-bottom: 10px;
+  margin: 0 0 0 0;
+  }
+
+.caja-foto img {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+} 
+
+.titulo-foto {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.titulo-foto:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.titulo-foto {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.caja-foto:hover > .titulo-foto {
+  opacity: 1;
+}
+
 
 
