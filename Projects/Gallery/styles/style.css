@@ -100,8 +100,8 @@ li.submenu__item {
 }
 
 div.container {
-  width: 80%;
-  max-width: 800px;
+  /* width: 80%;
+  max-width: 800px; */
   margin: 50px auto;
   text-align: center;
 }
