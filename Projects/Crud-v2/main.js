@@ -1,4 +1,4 @@
-import { addTeam, readList, updateList, deleteTeam } from './crud-functions/functions.js'
+import { addTeam, readList, updateList, deleteTeam, isChampionOrNot } from './crud-functions/functions.js'
 
 let menuNBA
 do {
@@ -8,6 +8,7 @@ do {
   (r) Leer tu lista de equipos
   (u) Actualizar la lista
   (d) Borrar un equipo de la lista
+  (f) Marcar si es campeón o no
   
   (x) Salir`)
 
@@ -19,6 +20,8 @@ do {
     updateList()
   } else if (menuNBA === 'd') {
     deleteTeam()
+  } else if (menuNBA === 'f') {
+    isChampionOrNot()
   } else if (menuNBA === 'x' || menuNBA === null) {
     console.log('SEE YOU WHERE AMAZING HAPPENS🏀')
   } else {

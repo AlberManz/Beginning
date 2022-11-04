@@ -1,16 +1,32 @@
 
 const favTeams = [
-  { id: 1, team: 'LA Lakers' },
-  { id: 2, team: 'GS Warriors' },
-  { id: 3, team: 'Memphis Grizzlies' }
+  { id: 1, team: 'LA Lakers', isChampion: true },
+  { id: 2, team: 'GS Warriors', isChampion: true },
+  { id: 3, team: 'Memphis Grizzlies', isChampion: false }
 ]
+
+const getTeam = (mensaje = 'Escribe el equipo') => {
+  let newTeam
+  do {
+    newTeam = prompt(mensaje)
+  } while (newTeam === null || newTeam.trim() === '' || isNaN(newTeam) === false)
+
+  return newTeam
+}
+
+const getID = () => {
+  let getID
+  do {
+    getID = prompt('Indica el id del equipo a actualizar')
+  } while (getID === null || getID.trim() === '' || isNaN(getID) === true)
+  getID = Number(getID)
+
+  return getID
+}
 
 let counterID = 3
 const addTeam = () => {
-  let newTeam
-  do {
-    newTeam = prompt('Introduce el nuevo equipo para añadirlo a la lista')
-  } while (newTeam === null || newTeam.trim() === '' || isNaN(newTeam) === false)
+  const newTeam = getTeam()
 
   counterID++
   const addTeam = {
@@ -25,25 +41,21 @@ const readList = () => {
   console.clear()
   console.log('🏀EQUIPOS FAVORITOS🏀')
   for (const teams of favTeams) {
-    console.log(`${teams.id}: ${teams.team}`)
+    const championIcon = teams.isChampion === true ? '💍' : '❌'
+    console.log(`${championIcon} - ${teams.id}: ${teams.team}`)
   }
 }
 
 const updateList = () => {
   readList()
-  let updateID
-  do {
-    updateID = prompt('Indica el id del equipo a actualizar')
-  } while (updateID === null || updateID.trim() === '' || isNaN(updateID) === true)
-  updateID = Number(updateID)
+
+  const updateID = getID()
 
   let isFound = false
   for (const i in favTeams) {
     if (updateID === favTeams[i].id) {
-      let updatedTeam
-      do {
-        updatedTeam = prompt('Introduce el nombre del equipo que ocupará el lugar')
-      } while (updatedTeam === null || updatedTeam.trim() === '' || isNaN(updatedTeam === false))
+      const updatedTeam = getTeam('Escribe al equipo que ocupará el lugar.')
+
       console.log(`El equipo ${favTeams[i].team} ha sido sustituido por ${updatedTeam}.`)
       favTeams[i].team = updatedTeam
       isFound = true
@@ -56,13 +68,11 @@ const updateList = () => {
 
 const deleteTeam = () => {
   readList()
-  let deleteID
-  do {
-    deleteID = prompt('Introduce el ID del equipo que quieres borrar.')
-  } while (deleteID === null || deleteID.trim() === '' || isNaN(deleteID) === true)
-  deleteID = Number(deleteID)
+
+  const deleteID = getID()
+
   let isFound = false
-  for (let i in favTeams) {
+  for (const i in favTeams) {
     if (deleteID === favTeams[i].id) {
       console.log(`El equipo ${favTeams[i].team} ha sido borrado.`)
       favTeams.splice(i, 1)
@@ -73,4 +83,24 @@ const deleteTeam = () => {
     console.error(`No existe ningún ID ${deleteID}`)
   }
 }
-export { addTeam, readList, updateList, deleteTeam }
+
+const isChampionOrNot = () => {
+  readList()
+
+  const championID = getID()
+
+  let isFound = false
+
+  for (const index in favTeams) {
+    const teams = favTeams[index]
+    if (championID === teams.id) {
+      teams.isChampion = !teams.isChampion
+      console.log(`El equipo ${teams.team} ahora es ${teams.isChampion ? 'campeón' : 'no campeón'}`)
+      isFound = true
+    }
+  }
+  if (!isFound) {
+    console.error('No existe un equipo con el id: ' + championID)
+  }
+}
+export { addTeam, readList, updateList, deleteTeam, isChampionOrNot }
