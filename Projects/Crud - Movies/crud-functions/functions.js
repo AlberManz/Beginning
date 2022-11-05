@@ -1,16 +1,30 @@
 // Creo una "mini base de datos" ya que no dispongo de una y el objetivo es desarrollar un "CRUD" básico
 const allMovies = [
-  { id: 1, movie: 'Cinema Paradiso' },
-  { id: 2, movie: 'Leolo' },
-  { id: 3, movie: 'El Padrino' }
+  { id: 1, movie: 'Cinema Paradiso', isWatched: true },
+  { id: 2, movie: 'Leolo', isWatched: false },
+  { id: 3, movie: 'El Padrino', isWatched: true }
 ]
+
+const getMovie = (mensaje = '¿Qué película quieres añadir a la lista?') => {
+  let newMovie
+  do {
+    newMovie = prompt(mensaje)
+  } while (newMovie === null || newMovie.trim() === '' || isNaN(newMovie === false))
+  return newMovie
+}
+
+const getID = (mensaje = 'Introduce el ID') => {
+  let ID
+  do {
+    ID = prompt(mensaje)
+  } while (ID === null || ID.trim() === '' || isNaN(ID) === true)
+  ID = Number(ID)
+  return ID
+}
 
 let counterID = 3
 const addMovie = () => {
-  let newMovie
-  do {
-    newMovie = prompt('¿Qué película quieres añadir a la lista?')
-  } while (newMovie === null || newMovie.trim() === '' || isNaN(newMovie === false))
+  const newMovie = getMovie()
 
   counterID++
   const addMovie = {
@@ -25,26 +39,20 @@ const readList = () => {
   console.clear()
   console.log('--- TU LISTA DE PELÍCULAS ---')
   for (const movie of allMovies) {
-    console.log(`${movie.id}: ${movie.movie}`)
+    const watchedIcon = movie.isWatched ? '👌' : '🍿'
+    console.log(`${watchedIcon} - ${movie.id}: ${movie.movie}`)
   }
 }
 
 const updateList = () => {
   readList()
 
-  let updateID
-  do {
-    updateID = prompt('Dime el id de la película que borrar.')
-  } while (updateID === null || updateID.trim() === '' || isNaN(updateID) === true)
-  updateID = Number(updateID)
+  const updateID = getID()
 
   let isFound = false
   for (const index in allMovies) {
     if (updateID === allMovies[index].id) {
-      let updatedMovie
-      do {
-        updatedMovie = prompt('Introduce el título de la película para actualizar el id en la lista')
-      } while (updatedMovie === null || updatedMovie.trim() === '' || isNaN(updatedMovie === false))
+      const updatedMovie = getMovie('Escribe el título de la película para actualizar')
 
       console.log(`La película "${allMovies[index].movie}" ha sido sustituida por "${updatedMovie}".`)
 
@@ -61,11 +69,7 @@ const updateList = () => {
 const deleteMovie = () => {
   readList()
 
-  let deleteID
-  do {
-    deleteID = prompt('Introduce el ID de la película que quieres borrar.')
-  } while (deleteID === null || deleteID.trim() === '' || isNaN(deleteID) === true)
-  deleteID = Number(deleteID)
+  const deleteID = getID()
 
   let isFound = false
 
@@ -82,4 +86,22 @@ const deleteMovie = () => {
   }
 }
 
-export { addMovie, readList, updateList, deleteMovie }
+const watchedOrNot = () => {
+  readList()
+
+  const watchedID = getID()
+  let isFound = false
+  for (const index in allMovies) {
+    const movie = allMovies[index]
+    if (watchedID === movie.id) {
+      movie.isWatched = !movie.isWatched
+      console.log(`La película ${movie.movie} ha sido marcada como ${movie.isWatched ? 'vista' : 'no vista'}`)
+      isFound = true
+    }
+  }
+  if (!isFound) {
+    console.error('No existe una película con el ID' + watchedID)
+  }
+}
+
+export { addMovie, readList, updateList, deleteMovie, watchedOrNot }

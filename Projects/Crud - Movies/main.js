@@ -1,4 +1,4 @@
-import { addMovie, readList, updateList, deleteMovie } from './crud-functions/functions.js'
+import { addMovie, readList, updateList, deleteMovie, watchedOrNot } from './crud-functions/functions.js'
 // Crear un menu (prompt) con diferentes opciones
 
 let menu
@@ -11,6 +11,7 @@ do {
   (r) Revisar la lista de películas
   (u) Actualizar la lista
   (d) Borrar película
+  (f) Marcar como vista o no vista
   
   (x) Salir`)
 
@@ -22,6 +23,8 @@ do {
     updateList()
   } else if (menu === 'd') {
     deleteMovie()
+  } else if (menu === 'f') {
+    watchedOrNot()
   } else if (menu === 'x' || menu === null) {
     console.log('BYE BYE 👋')
   } else {
