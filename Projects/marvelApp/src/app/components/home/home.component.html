@@ -1,1 +1,10 @@
-<p>home works!</p>
+<section class="container">
+   <div class="row">
+    <article *ngFor="let character of arrCharacter | paginate: { itemsPerPage: 8, currentPage: page }" class="col-12 col-md-6 col-lg-3">
+      <app-card [character]="character"></app-card>
+    </article>
+  </div>
+</section>
+<div class="d-flex justify-content-center mt-5">
+  <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>
