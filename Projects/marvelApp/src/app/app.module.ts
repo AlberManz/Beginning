@@ -8,13 +8,20 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
+import { CharacterViewComponent } from './components/character-view/character-view.component';
+import { SeriesComponent } from './components/series/series.component';
+import { ComicsComponent } from './components/comics/comics.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CardComponent
+    CardComponent,
+    CharacterViewComponent,
+    SeriesComponent,
+    ComicsComponent,
   ],
   imports: [
     BrowserModule,

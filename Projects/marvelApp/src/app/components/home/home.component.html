@@ -1,6 +1,11 @@
 <section class="container">
+  <div class="col-sm-12 col-md-4 col-lg-3 ms-auto mb-5">
+    <input class="form-control mr-sm-2" type="text"
+    required name='characterName' id='characterName'
+    placeholder="Search" aria-label="Search" (input)="findCharacter($event)">
+  </div>
    <div class="row">
-    <article *ngFor="let character of arrCharacter | paginate: { itemsPerPage: 8, currentPage: page }" class="col-12 col-md-6 col-lg-3">
+    <article *ngFor="let character of arrCharacters | paginate: { itemsPerPage: 12, currentPage: page }" class="col-12 col-md-6 col-lg-3">
       <app-card [character]="character"></app-card>
     </article>
   </div>

@@ -1,4 +1,4 @@
-<figure class="card">
+<figure class="card" [routerLink]="['/character', character.id]">
   <img class="image" src={{character.thumbnail.path}}.{{character.thumbnail.extension}} [alt]="character.name">
   <div class="overlay">
       <figcaption class="title">{{character.name}}</figcaption>
