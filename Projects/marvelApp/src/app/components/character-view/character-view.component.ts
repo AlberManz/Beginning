@@ -10,21 +10,21 @@ import { CharactersService } from 'src/app/services/characters.service';
 })
 export class CharacterViewComponent implements OnInit{
 
-  character!: Character
+  characterInfo: Character[] = [];
 
   constructor (
     private charactersService: CharactersService,
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit (): void {
+  ngOnInit () {
     this.activatedRoute.params.subscribe((params: any) => {
-      let id: number = parseInt(params.idcharacter)
-      console.log(id)
+      let id = parseInt(params.idcharacter)
 
-      this.charactersService.getCharacterById(id).subscribe((data: any) => this.character = data.data.results)
-      console.log(this.character)
+      this.charactersService.getCharacterById(id).subscribe((data: any) => {
+        this.characterInfo = data.data.results
+        console.log(this.characterInfo)
+      });
     })
   }
-
 }

@@ -1,3 +1,4 @@
-<section>
-  <h1>{{character}}</h1>
+<section *ngFor="let character of characterInfo">
+  <h2 class="title">{{ character.name }}</h2>
+  <p>{{ character.description }}</p>
 </section>

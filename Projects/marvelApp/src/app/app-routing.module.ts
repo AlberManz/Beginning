@@ -6,12 +6,12 @@ import { HomeComponent } from './components/home/home.component';
 import { SeriesComponent } from './components/series/series.component';
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "home" },
-  { path: "home", component: HomeComponent },
+  { path: "", pathMatch: "full", redirectTo: "characters" },
+  { path: "characters", component: HomeComponent },
   { path: "character/:idcharacter", component: CharacterViewComponent },
   { path: "comics", component: ComicsComponent },
   { path: "series", component: SeriesComponent },
-  { path: "**", redirectTo: "home" }
+  { path: "**", redirectTo: "characters" }
 ];
 
 @NgModule({
