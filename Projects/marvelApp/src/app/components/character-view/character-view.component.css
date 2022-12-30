@@ -1,4 +1,9 @@
 .title {
-  padding: 5px;
   border-bottom: 1px solid white;
+}
+
+.description {
+  font-size: var(--font-size);
+  font-weight: 700;
+  text-align: center;
 }

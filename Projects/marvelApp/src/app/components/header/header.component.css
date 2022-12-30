@@ -13,3 +13,12 @@ nav {
   height: 30px;
   width: 100px;
 }
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: var(--primary-color-hover);
+  transition: .6s ease;
+}

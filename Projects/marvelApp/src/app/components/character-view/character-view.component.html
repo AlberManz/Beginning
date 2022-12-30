@@ -1,4 +1,30 @@
-<section *ngFor="let character of characterInfo">
-  <h2 class="title">{{ character.name }}</h2>
-  <p>{{ character.description }}</p>
+<section *ngFor="let character of characterInfo" class="container bg-transparent text-white mt-3">
+  <h1 class="title mb-4">{{ character.name }}</h1>
+  <div class="row">
+    <figure class="col-12 col-md-4">
+      <img class="image" src={{character.thumbnail.path}}.{{character.thumbnail.extension}} [alt]="character.name" class="img-fluid img-thumbnail">
+    </figure>
+    <div class="col-12 col-md-8">
+      <p class="description">{{ character.description }}</p>
+  </div>
+</div>
 </section>
+
+<!-- <div class="bg-transparent text-white mt-3">
+  <div class="row g-3">
+    <figure class="col-12 col-md-4">
+      <img [src]="character.imagen" [alt]="character.nombre_real" class="img-fluid img-thumbnail">
+    </figure>
+    <div class="col-12 col-md-8">
+      <h1>{{character.nombre_real}}</h1>
+      <hr>
+      <p class="card-text">Personaje que interpreta: <strong>{{character.nombre_personaje}}</strong></p>
+      <p class="card-text">Número de episodios: <strong>{{character.episodios}}</strong></p>
+      <a class="boton me-2" [routerLink]="['/serie', character.serie]">Su serie</a>
+      <a class="boton" [routerLink]="['/personajes']">Volver a personajes</a>
+    </div>
+  </div>
+</div> -->
+
+
+

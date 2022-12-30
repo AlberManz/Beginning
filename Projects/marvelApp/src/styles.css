@@ -10,23 +10,24 @@
 
 :root {
   --font-family: font-family: 'Montserrat', sans-serif;
-  --primaryColor: #5f42e7;
-  --secondaryColor: black;
-  --fontSize: 1em;
+  --primary-color: #ff000085;
+  --primary-color-hover: #ff0000d3;
+  --secondary-color: black;
+  --font-size: 1.2em;
   --bs-body-bg: #232323 !important;
 }
 
 body {
   font-family: var(--font-family);
-  color: white !important;
+  color: #fff !important;
 }
 
 html {
   background-color: var(--bs-body-bg);
 }
 
-img{
+img {
   width: 100%;
-  height: auto;
   display: block;
 }
+
