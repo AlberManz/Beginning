@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/characters/home.component';
 import { CardComponent } from './components/card/card.component';
 import { CharacterViewComponent } from './components/character-view/character-view.component';
 import { SeriesComponent } from './components/series/series.component';

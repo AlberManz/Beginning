@@ -7,3 +7,14 @@
   font-weight: 700;
   text-align: center;
 }
+
+.btn {
+  font-size: var(--font-size);
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-hover);
+  transition: .4s ease;
+}

@@ -15,23 +15,16 @@ baseUrl = `https://gateway.marvel.com:443/v1/public/characters`;
   constructor(private httpClient: HttpClient) { }
 
   getAllCharacters (): Observable<Character> {
-    return this.httpClient.get<Character>(`${this.baseUrl}?limit=100&ts=1&offset=1100&apikey=${this.publicKey}&hash=${this.hash}`);
+    return this.httpClient.get<Character>(`${this.baseUrl}?limit=100&ts=1&apikey=${this.publicKey}&hash=${this.hash}`);
   }
 
   getCharacterById (pId: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "/" + pId + `?apikey=${this.publicKey}&ts=1&hash=${this.hash}`);
   }
 
-  // getCharacterByName (pName: string): Observable<any> {
-  //   return this.httpClient.get<any>(`${this.baseUrl}?name=${pName}&apikey=${this.public_key}&hash=${this.hash}`)
-  // }
-
-  getCharacterByName(characterName:string):Observable<any>
-  {
-    const characterBYNameUrl = `https://gateway.marvel.com:443/v1/public/characters?name=${characterName}&ts=1&apikey=${this.publicKey}&hash=${this.hash}`;
-    return this.httpClient.get(characterBYNameUrl);
+  getCharacterByName (characterName: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}?name=${characterName}&ts=1&apikey=${this.publicKey}&hash=${this.hash}`);
   }
-
 }
 
 

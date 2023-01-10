@@ -18,26 +18,30 @@ export class CharacterViewComponent implements OnInit {
   showComicsDiv: boolean = false;
   showSeriesDiv: boolean = false;
 
+
   constructor (
     private charactersService: CharactersService,
     private comicsService: ComicsService,
     private seriesService: SeriesService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit () {
+    
     this.activatedRoute.params.subscribe((params: any) => {
       
       let id = parseInt(params.idcharacter)
 
-      this.charactersService.getCharacterById(id).subscribe((data: any) => {
+      this.charactersService.getCharacterById(id)
+      .subscribe((data: any) => {
         this.characterInfo = data.data.results
       });
     })
   }
 
   fetchComicsByCharacter (characterId: number){
-    this.comicsService.getComicsByCharacter(characterId).subscribe((data: any)=>{
+    this.comicsService.getComicsByCharacter(characterId)
+    .subscribe((data: any)=>{
       if(data.data.count > 0)
       {
         this.comics = data.data.results;
@@ -47,8 +51,8 @@ export class CharacterViewComponent implements OnInit {
   }
 
   fetchSeriesByCharacter (characterId: number) {
-    this.seriesService.getSeriesByCharacter(characterId).subscribe((data: any)=>{
-
+    this.seriesService.getSeriesByCharacter(characterId)
+    .subscribe((data: any)=>{
       if (data.data.count > 0)
       {
         this.series = data.data.results;
